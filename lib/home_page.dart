@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_two/constants/screen_size.dart';
+import 'package:instagram_two/screens/feed_screen.dart';
+import 'package:instagram_two/screens/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -21,10 +24,25 @@ class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
 
+  static List<Widget> _screens = <Widget>[
+    FeedScreen(),
+    Container(color : Colors.amberAccent,),
+    Container(color : Colors.blueAccent,),
+    Container(color : Colors.greenAccent,),
+    ProfileScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
+    if (size == null) {
+      size = MediaQuery.of(context).size;
+    }
+
     return Scaffold(
-        body: Container(color: Colors.red),
+        body: IndexedStack(
+          index : _selectedIndex,
+          children: _screens,
+        ),
         bottomNavigationBar:  BottomNavigationBar(
           showSelectedLabels:  false,
           showUnselectedLabels:  false,

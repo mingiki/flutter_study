@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_two/constants/material_white89.dart';
 import 'package:instagram_two/home_page.dart';
 
 void main() {
@@ -11,7 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home : HomePage()
+      home : HomePage(),
+      theme: ThemeData(
+        primarySwatch: white89
+      ),
     );
   }
 }
